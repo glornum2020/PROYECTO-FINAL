@@ -45,4 +45,5 @@ names(Table_Final)<-gsub("gravity", "Gravity", names(Table_Final))
 
 #5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 test1 <- group_by(Table_Final, subject, activity)  #Agrupa la tabla de acuerdo a las variables seleccionadas
-summarise_all(test1, list(mean)) #Organiza en un solo valor (mean) los datos de mismo grupo
+averages <- summarise_all(test1, list(mean)) #Organiza en un solo valor (mean) los datos de mismo grupo
+write.table(averages, "averages.txt", row.name=FALSE) #Para convertirlo en texto
